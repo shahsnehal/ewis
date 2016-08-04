@@ -36,7 +36,8 @@
 			    <li><a href="#">Home</a></li>
 			    <li><a href="${pageContext.request.contextPath}/material">Material </a></li>
 			    <li class="active"><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
-			    <li><a href="#">Order Management </a></li>
+			    <li><a href="${pageContext.request.contextPath}/order">Order Management </a></li>
+			    <li><a href="${pageContext.request.contextPath}/areaManagement">Area Management </a></li>
 			 </ul>
 		</div>
 	
@@ -62,7 +63,7 @@
 			
 			<div align="right">
 			    <a href="addInventory" class="btn btn-primary btn-sm" >
-					<span class="glyphicon glyphicon-plus"></span> Add
+					<span class="glyphicon glyphicon-plus" ></span> Add
 				</a>
 			</div>
 			

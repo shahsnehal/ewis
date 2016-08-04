@@ -2,7 +2,9 @@ package com.ewis.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -176,4 +178,141 @@ public class HomeController {
 
 		return "inventoryProperties";
 	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/order", method = {RequestMethod.GET,RequestMethod.POST})
+	public String order(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : order ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : order ---->  Exit");
+
+		return "order";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/newOrder", method = {RequestMethod.GET,RequestMethod.POST})
+	public String newOrder(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : newOrder ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : newOrder ---->  Exit");
+
+		return "newOrder";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/newOrderData", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView newOrderData(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : newOrderData ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Order has been added Successfully ");
+		log.info(this.getClass().getName() + "Method : newOrderData ---->  Exit");
+
+		return new RedirectView("order", true);
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/areaManagement", method = {RequestMethod.GET,RequestMethod.POST})
+	public String areaManagement(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : areaManagement ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : areaManagement ---->  Exit");
+
+		return "areaManagement";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/addArea", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView addArea(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : addArea ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Area has been added Successfully ");
+		log.info(this.getClass().getName() + "Method : addArea ---->  Exit");
+
+		return new RedirectView("areaManagement", true);
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/updateArea", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView updateArea(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : updateArea ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Area has been updated Successfully ");
+		log.info(this.getClass().getName() + "Method : updateArea ---->  Exit");
+
+		return new RedirectView("areaManagement", true);
+	}
+	
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/locations", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView locations(ModelMap modelMap,HttpServletRequest request) {
+		log.info(this.getClass().getName() + "Method : locations ---->  Enter");
+		if(request.getParameter("areaName") != null ){
+			HttpSession session = request.getSession();
+			session.setAttribute("areaName", request.getParameter("areaName"));
+		}
+		
+		log.info(this.getClass().getName() + "Method : locations ---->  Exit");
+
+		return new ModelAndView("locations");
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/addLocation", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView addLocation(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : addLocation ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Location has been added Successfully ");
+		log.info(this.getClass().getName() + "Method : addLocation ---->  Exit");
+
+		return new RedirectView("locations", true);
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/updateLocation", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView updateLocation(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : updateLocation ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Location has been updated Successfully ");
+		log.info(this.getClass().getName() + "Method : updateLocation ---->  Exit");
+
+		return new RedirectView("locations", true);
+	}
+	
 }

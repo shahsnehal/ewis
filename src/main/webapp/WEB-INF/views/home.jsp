@@ -47,7 +47,8 @@
 			    <li><a href="#">Home</a></li>
 			    <li class="active"><a href="${pageContext.request.contextPath}/material">Material </a></li>
 			    <li><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
-			    <li><a href="#">Order Management </a></li>
+			    <li><a href="${pageContext.request.contextPath}/order">Order Management </a></li>
+			    <li><a href="${pageContext.request.contextPath}/areaManagement">Area Management </a></li>
 			 </ul>
 		</div>
 	
