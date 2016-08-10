@@ -49,6 +49,7 @@
 		    <thead>
 		      <tr>
 		      	<th>Lot ID</th>
+		      	<th>Material ID</th>
 		      	<th>Quantity</th>
 		      	<th>Area</th>
 		        <th>Location</th>
@@ -58,6 +59,7 @@
 		    <tbody>
 		      <tr>
 		      	<td>LOT001</td>
+		      	<td>MA002SA</td>
 		      	<td>200</td>
 		        <td>Area 1</td>
 		        <td>Location 1</td>
@@ -65,6 +67,7 @@
 		      </tr>
 		      <tr>
 		      	<td>LOT002</td>
+		      	<td>MA002RA</td>
 		      	<td>300</td>
 		       <td>Area 2</td>
 		        <td>Location 2</td>
@@ -72,6 +75,7 @@
 		      </tr>
 		      <tr>
 		      	<td>LOT003</td>
+		      	<td>MA003DY</td>
 		      	<td>800</td>
 		        <td>Area 5</td>
 		        <td>Location 3</td>
@@ -232,78 +236,73 @@
 			  </div>
 			</div>
 			
-			<!-- Move lot Modal -->
+			<!-- split lot Modal -->
 			<div id="splitLotModal" class="modal fade" role="dialog">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			    	
-			    	<form class="form-horizontal" action="#" id="splitLotForm" method="get">
+			    	<form class="" action="#" id="splitLotForm" method="get">
 			    	
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal">&times;</button>
 				        <h4 class="modal-title">Split lot</h4>
 				      </div>
 				     
-				      <div class="modal-body">
+				      <div class="modal-body row">
 				        
-				        <label>Lot ID : </label> <span id="splitLotIdLabel"></span><br> 
+				        <div class="col-sm-12">
+				        
+				        <label>Lot ID : </label> <span id="splitLotIdLabel"></span>&nbsp&nbsp&nbsp&nbsp
 				        <label>Quantity : </label> <span id="splitQuantityLabel"></span>
-				        <hr>
 				        
 				        <div class="splitFormParent">
 				        <div class="splitFormChild">
 				        
 					        <div align="right"> 
-					        	<button type="button" class="removeSplitForm btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
+					        	<button type="button" class="removeSplitForm btn btn-danger btn-sm" style="display: none;"><span class="glyphicon glyphicon-remove"></span></button>
 					        </div>
 					        <br>
-					        <div class="form-group">
-					       	 	<label class="control-label col-sm-4">Container ID:</label>
-					       	 	<div class="col-sm-8">
-					      			<input type="text" class="form-control" id="container" placeholder="Container ID">
-								</div>
+					        
+					        <div class="form-group col-sm-6">
+					       	 	<label>Container ID:</label>
+					      		<input type="text" class="form-control" id="container" placeholder="Container ID">
 					    	</div>
 					    
-					        <div class="form-group">
-						      <label class="control-label col-sm-4">Quantity:</label>
-						      <div class="col-sm-8">
-							      <input type="number"  min="0" class="form-control" >
-							  </div>
+					        <div class="form-group col-sm-6">
+						      <label>Quantity:</label>
+							  <input type="number"  min="0" class="form-control" >
 							</div>
 						        
-					        <div class="form-group">
-						      <label class="control-label col-sm-4">Target area : </label>
-						      <div class="col-sm-8">
-							      <select class="form-control" name="targetArea">
-									<option value="Area 1" >Area 1</option>
-									<option value="Area 2" >Area 2</option>
-									<option value="Area 3" >Area 3</option>
-									<option value="Area 4" >Area 4</option>
-									<option value="Area 5" >Area 5</option>
-									<option value="Area 6" >Area 6</option>
-								  </select>
-								</div>
+					        <div class="form-group col-sm-6">
+						      <label>Target area : </label>
+						      <select class="form-control" name="targetArea">
+								<option value="Area 1" >Area 1</option>
+								<option value="Area 2" >Area 2</option>
+								<option value="Area 3" >Area 3</option>
+								<option value="Area 4" >Area 4</option>
+								<option value="Area 5" >Area 5</option>
+								<option value="Area 6" >Area 6</option>
+							  </select>
 						    </div>
 						    
-						     <div class="form-group">
-						      <label class="control-label col-sm-4">Target location : </label>
-						      <div class="col-sm-8">
-							      <select class="form-control" name="targetLocation" id="targetLocation">
-									<option value="location 1" >Location 1</option>
-									<option value="location 2" >Location 2</option>
-									<option value="location 3" >Location 3</option>
-									<option value="location 4" >Location 4</option>
-									<option value="location 5" >Location 5</option>
-									<option value="location 6" >Location 6</option>
-								  </select>
-								</div>
+						     <div class="form-group col-sm-6">
+						      <label>Target location : </label>
+						      <select class="form-control" name="targetLocation" id="targetLocation">
+								<option value="location 1" >Location 1</option>
+								<option value="location 2" >Location 2</option>
+								<option value="location 3" >Location 3</option>
+								<option value="location 4" >Location 4</option>
+								<option value="location 5" >Location 5</option>
+								<option value="location 6" >Location 6</option>
+							  </select>
 						    </div>
 				        
 				        </div>
-				        <div class="splitExtraForm"></div>
+				        
 				        </div>
-			        	
-					    
+			        	<div class="splitExtraForm " id="splitExtraForm"></div>
+				      
+				      </div>
 				      </div>
 				     
 				      <div class="modal-footer">
@@ -312,7 +311,7 @@
 				      	</button>
 				       
 				        <button type="submit" class="btn btn-primary btn-sm" data-dismiss="modal"
-				         onclick='showNotification( " Lot " + $("span#splitLotIdLabel").text() + " splited into container ")'>
+				         onclick='showNotification( " Lot " + $("span#splitLotIdLabel").text() + " successfully splited into containers ")'>
 				         Split </button>
 				      </div>
 			      
@@ -339,6 +338,13 @@ $(function () {
             var name = $(row.children('*')[0]).text();
             var action = $(e.target).text();
            
+            var lotId = $(row.children('*')[0]).text();
+            var materialId = $(row.children('*')[1]).text();
+            var quantity = $(row.children('*')[2]).text();
+            var lotArea = $(row.children('*')[3]).text();
+            var lotLocation = $(row.children('*')[4]).text();
+            var qcStatus = $(row.children('*')[5]).text();
+            
         	var notificationMessage = "";
         	
             if(action == "Copy"){
@@ -357,30 +363,30 @@ $(function () {
             	
             	$('#wasteInventoryModal').on('show.bs.modal', function (event) {
           		  var modal = $(this)
-          		  modal.find('.modal-body #wastedLotIdLabel').html($(row.children('*')[0]).text())
-           		  modal.find('.modal-body #quantityLabel').html($(row.children('*')[1]).text())
+          		  modal.find('.modal-body #wastedLotIdLabel').html(lotId)
+           		  modal.find('.modal-body #quantityLabel').html(quantity)
           		})
           		$('#wasteInventoryModal').modal('toggle');
             	
             }else if(action == "Delete"){
+            	
             	notificationMessage = name + " deleted successfully";
+            	
             }else if(action == "Adjust Quantity"){
 
             	$('#adjustInventoryModal').on('show.bs.modal', function (event) {
             		  var modal = $(this)
-            		  modal.find('.modal-body #adjustLotIdLabel').html($(row.children('*')[0]).text())
-             		  modal.find('.modal-body #quantityLabel').html($(row.children('*')[1]).text())
+            		  modal.find('.modal-body #adjustLotIdLabel').html(lotId)
+             		  modal.find('.modal-body #quantityLabel').html(quantity)
             	})
             	$('#adjustInventoryModal').modal('toggle');
             	
-            }else if(action == "Properties"){
-            	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+'/container?lotId='+name;
             }else if(action == "Split"){
             	
             	$('#splitLotModal').on('show.bs.modal', function (event) {
           		  var modal = $(this)
-          		  modal.find('.modal-body #splitLotIdLabel').html($(row.children('*')[0]).text())
-           		  modal.find('.modal-body #splitQuantityLabel').html($(row.children('*')[1]).text())
+          		  modal.find('.modal-body #splitLotIdLabel').html(lotId)
+           		  modal.find('.modal-body #splitQuantityLabel').html(quantity)
           		})
           		$('#splitLotModal').modal('toggle');
             	
@@ -388,12 +394,16 @@ $(function () {
             	
             	$('#moveLotModal').on('show.bs.modal', function (event) {
             		  var modal = $(this)
-            		  modal.find('.modal-body #moveLotIdLabel').html($(row.children('*')[0]).text())
-             		  modal.find('.modal-body #quantityLabel').html($(row.children('*')[1]).text())
-             		  modal.find('.modal-body #areaLabel').html($(row.children('*')[2]).text())
-             		  modal.find('.modal-body #locationLabel').html($(row.children('*')[3]).text())
+            		  modal.find('.modal-body #moveLotIdLabel').html(lotId)
+             		  modal.find('.modal-body #quantityLabel').html(quantity)
+             		  modal.find('.modal-body #areaLabel').html(lotArea)
+             		  modal.find('.modal-body #locationLabel').html(lotLocation)
             		})
             	$('#moveLotModal').modal('toggle');
+            	
+            }else if(action == "Properties"){
+            	
+            	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+'/container?lotId='+lotId;
             	
             }
             
@@ -428,18 +438,29 @@ $(document).ready(function() {
 	    showNotification(notificationMessage)
 	};
 	
-	var splitChild = $(".splitFormParent").children().clone(true);
+	var splitChildDiv = $(".splitFormParent").children();
+	var splitChildDivNo = 1;
  	
-	 $("#addSplitForm").click(function(){
-		 splitChild.appendTo(".splitExtraForm");
-		/* $(".extraUploadForm .uploadFormChild:last-child").find('input:file').val('');
-		$(".extraUploadForm .uploadFormChild:last-child").find(".file-input-name").empty(); */
-		$(".splitExtraForm .splitFormChild:last-child .removeSplitForm").css("display","block");;
+	$("#addSplitForm").click(function(){
 		
-     });
-	 
-	 $(".removeSplitForm").click(function(){
+		if(splitChildDivNo <3 ){
+			splitChildDiv.clone(true,true).appendTo(".splitExtraForm");	
+			$(".splitExtraForm .splitFormChild:last-child").find("input").val(''); 
+			$(".splitExtraForm .splitFormChild:last-child .removeSplitForm").css("display","block");
+			splitChildDivNo += 1 ;
+		}
+		if(splitChildDivNo == 3){
+			$("#addSplitForm").css("visibility","hidden");
+		}
+		
+	});
+	
+	$(".removeSplitForm").click(function(){
   		$(this).closest('.splitFormChild').remove();
+  		splitChildDivNo -= 1;
+  		$("#addSplitForm").css("visibility","visible");
+  		//$(".modal-dialog").width($(".splitFormChild").width()*splitChildDivNo);
+  		
      });
 	
 } );

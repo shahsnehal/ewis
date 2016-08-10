@@ -35,13 +35,14 @@
 			
 			<h2>Inventory Properties </h2><br>
 			
-			<p>Material ID : MA001SA</p>
 			<p>Lot ID : LOT001</p>
-			<p>Area : Area Detail</p>
-			<p>Location : Location Detail</p>
+			<p>Material ID : MA001SA</p>
 			<p>Quantity : 200</p>
 			<p>UOM : Measure 1</p>
 			<p>QC Status : Status 1</p>
+			<p>Area : Area Detail</p>
+			<p>Location : Location Detail</p>
+			
 			<br>
 			<a href="inventory" class="btn btn-default btn-sm" >
 					<span class="glyphicon glyphicon-arrow-left"></span> Back
