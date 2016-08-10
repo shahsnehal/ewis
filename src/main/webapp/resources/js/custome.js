@@ -88,3 +88,28 @@ function deleteDiv(element) {
 	element.parentElement.parentElement.parentElement.remove();
 	onclick="deleteDiv(this);"
 }
+
+function showNotification(notificationMessage){
+	
+	//Remove Existing Notification
+    var notification = document.getElementById("notification");
+	if (notification != null) {
+		notification.parentNode.removeChild(notification);
+	}
+	
+	if(notificationMessage != ""){
+    	
+        var div = document.createElement("div");
+        div.id = "notification"
+        div.innerHTML = '<div class="alert alert-success" >'
+		  	+ '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
+		  	+ notificationMessage
+			+ '</div>';
+        
+        document.getElementById("notificationArea").appendChild(div);
+    }
+}
+
+function formSubmit(formId) {
+	document.getElementById(formId).submit();
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inventory>
+	<lotId>LOT001</lotId>
+	<materialId>MA0001SA</materialId>
+	<materialName>Material1</materialName>
+	<Containers>
+		<Container>
+			<id>CA002TH</id>
+			<quantity>200</quantity>
+			<area>Area1</area>
+			<location>Location1</location>
+		</Container>
+		<Container>
+			<id>CA002NA</id>
+			<quantity>400</quantity>
+			<area>Area2</area>
+			<location>Location2</location>
+		</Container>
+		<Container>
+			<id>CA002IS</id>
+			<quantity>300</quantity>
+			<area>Area3</area>
+			<location>Location3</location>
+		</Container>
+	</Containers>
+	<uom>kilogram</uom>
+	<status>status1</status>
+</inventory>

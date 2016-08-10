@@ -4,15 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
+import com.ewis.pojo.Material;
 
 /**
  * Handles requests for the application home page.
@@ -47,19 +51,42 @@ public class HomeController {
 
 		return "home";
 	}
-
+	
 	/**
 	 * 
 	 * @param modelMap
 	 * @return
 	 */
 	@RequestMapping(value = "/addMaterial", method = {RequestMethod.GET,RequestMethod.POST})
-	public String addMaterial(ModelMap modelMap) {
+	public ModelAndView addMaterial(ModelMap modelMap) {
 		log.info(this.getClass().getName() + "Method : addMaterial ---->  Enter");
 
 		log.info(this.getClass().getName() + "Method : addMaterial ---->  Exit");
 
-		return "addMaterial";
+		return new ModelAndView("addMaterial");
+	}
+	
+	@RequestMapping(value = "/editMaterial", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView editMaterial(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+		log.info(this.getClass().getName() + "Method : editMaterial ---->  Enter");
+		
+		Material material = new Material();
+		
+		material.setName("Material1");
+		material.setDiscription("Material disctiption");
+		material.setStatus("New");
+		material.setEffactiveDate("09/20/2016");
+		material.setExpirationDate("08/01/2016");
+		material.setQuantity("200");
+		material.setType("Type1");
+		material.setStorageClass("Storage Class 1");
+		request.setAttribute("material", material);
+		
+		request.setAttribute("name", "abcd");
+		
+		log.info(this.getClass().getName() + "Method : editMaterial ---->  Exit");
+
+		return new ModelAndView("addMaterial");
 	}
 	
 	/**
@@ -140,13 +167,17 @@ public class HomeController {
 	 * @param modelMap
 	 * @return
 	 */
-	@RequestMapping(value = "/adjustInventory", method = {RequestMethod.GET,RequestMethod.POST})
-	public String adjustInventory(ModelMap modelMap) {
-		log.info(this.getClass().getName() + "Method : adjustInventory ---->  Enter");
+	@RequestMapping(value = "/editInventory", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView adjustInventory(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+		log.info(this.getClass().getName() + "Method : editInventory ---->  Enter");
 
-		log.info(this.getClass().getName() + "Method : adjustInventory ---->  Exit");
+		request.setAttribute("lotID", "LOT003");
+		request.setAttribute("quantity", "200");
+		request.setAttribute("area", "Area Detail");
+		request.setAttribute("location", "Location detail");
+		log.info(this.getClass().getName() + "Method : editInventory ---->  Exit");
 
-		return "adjustInventory";
+		return new ModelAndView("addInventory");
 	}
 	
 	/**
@@ -176,6 +207,26 @@ public class HomeController {
 		log.info(this.getClass().getName() + "Method : inventoryProperties ---->  Exit");
 
 		return "inventoryProperties";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/container", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView container(ModelMap modelMap,HttpServletRequest request, HttpServletResponse response) {
+
+		log.info(this.getClass().getName() + "Method : container ---->  Enter");
+
+		if(request.getParameter("lotId") != null ){
+			HttpSession session = request.getSession();
+			session.setAttribute("lotId", request.getParameter("lotId"));
+		}
+		
+		log.info(this.getClass().getName() + "Method : container ---->  Exit");
+
+		return new ModelAndView("container");
 	}
 	
 	/**
@@ -274,6 +325,7 @@ public class HomeController {
 	@RequestMapping(value = "/locations", method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView locations(ModelMap modelMap,HttpServletRequest request) {
 		log.info(this.getClass().getName() + "Method : locations ---->  Enter");
+		
 		if(request.getParameter("areaName") != null ){
 			HttpSession session = request.getSession();
 			session.setAttribute("areaName", request.getParameter("areaName"));

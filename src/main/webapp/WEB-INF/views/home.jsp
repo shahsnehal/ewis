@@ -3,38 +3,8 @@
 <%@ page session="false"%>
 <html>
 <head>
-
-	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"	rel="stylesheet">
-	<%-- <link href="${pageContext.request.contextPath}/resources/css/customized.css"	rel="stylesheet"> --%>
+	<jsp:directive.include file="include_header_scripts.jsp" />
 	<title>Home</title>
-	<style type="text/css">
-	#contextMenu{
-	    position: absolute;
-	    display:none;
-	}
-	</style>
-	<script	src="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap-contextmenu.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/alert.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			var importFile = document.getElementById("import");
-			importFile.onclick = function () {
-			    this.value = null;
-			};
-			importFile.onchange = function () {
-			  //  alert(this.value);
-			    var notificationMessage = this.value.substr((this.value).lastIndexOf('\\')+1)+" imported successfully"
-			    showNotification(notificationMessage)
-			    
-			};
-			/* $("button").click(function(){
-		    	alert("The button was clicked.");
-		    }); */
-		});
-	</script> 
-
 </head>
 <body style="margin: 0">
 <jsp:include page="header.jsp"></jsp:include>
@@ -70,24 +40,15 @@
 				</div>
 			</div>
 			
-			<h2 id="materialList">Material List </h2><br>
+			<h2>Material List </h2><br>
 			
-			<div align="right">
-			    <label class="btn btn-primary btn-sm">
-			        <span class="glyphicon glyphicon-import"></span> Import <input type="file" id="import" style="display: none;">
-			    </label>
-			    <a href="addMaterial" class="btn btn-primary btn-sm" >
-					<span class="glyphicon glyphicon-plus"></span> Add
-				</a>
-			</div>
-			
-			<table class="table table-hover" id="materialTable">
+			<table class="table table-striped table-bordered table-hover" id="materialTable">
 		    <thead>
 		      <tr>
 		      	<th>Material ID</th>
 		        <th>Material Name</th>
+		        <th>Material Type</th>
 		        <th>Status</th>
-		        <th>Effective Date</th>
 		        <th>Expiration  Date</th>
 		        <th>Last changed date</th>
 		        <th>Last changed by</th>
@@ -97,8 +58,8 @@
 		      <tr>
 		        <td>MA001SA</td>
 		        <td>Material 1</td>
+		        <td>Type1</td>
 		        <td>New</td>
-		        <td>08/01/2016</td>
 		        <td>09/20/2016</td>
 		        <td>08/01/2016</td>
 		        <td>User1</td>
@@ -106,17 +67,17 @@
 		      <tr>
 		        <td>MA002SA</td>
 		        <td>Material 2</td>
+		        <td>Type2</td>
 		        <td>New</td>
-		        <td>08/01/2016</td>
 		        <td>04/30/2017</td>
 		        <td>08/04/2016</td>
 		        <td>User2</td>
 		      </tr>
-		      <tr>  <!-- data-toggle="context" data-target="#context-menu" -->
+		      <tr>  
 		        <td>MA003SA</td>
 		        <td>Material 3</td>
+		        <td>Type1</td>
 		        <td>Obsolete</td>
-		        <td>08/01/2016</td>
 		        <td>02/01/2017</td>
 		        <td>08/01/2016</td>
 		        <td>User3</td>
@@ -143,9 +104,8 @@
 	</div>
 	</div>
 	
-	
-<script>
 
+<script>
 $(function () {
 
 	$('#materialTable').contextmenu({
@@ -158,48 +118,55 @@ $(function () {
         	var notificationMessage = "";
         	
             if(action == "Copy"){
-            	notificationMessage = name + " copied successfully";
+            	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+"/editMaterial";
             }else if(action == "Obsolete"){
-            	notificationMessage = name + " obsolated successfully";
+            	var response = confirm("Are you sure? You want obsolate " + name + "!");
+            	if (response == true) {
+            		notificationMessage = name + " obsolated successfully"
+            	}
             }else if(action == "Delete"){
-            	notificationMessage = name + " deleted successfully";
+            	var response = confirm("Are you sure? You want delete " + name + "!");
+            	if (response == true) {
+            		notificationMessage = name + " deleted successfully"
+            	}
             }else if(action == "Open attributes/Properties"){
             	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+"/materialAttributes";
             }else if(action == "Export"){
             	window.open(location.href.substr(0, (location.href).lastIndexOf('/'))+'/resources/exportMaterial.xml', '_blank');
+            }else if (action == "Check out"){
+            	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+"/editMaterial";
             }
             
             showNotification(notificationMessage)
-            
-            //alert('You right clicked on ' + name + '\'s row and selected menu item "' + action  + '".');
         }
     });
 });
 
-function showNotification(notificationMessage){
+$(document).ready(function() {
+    
+	$('#materialTable').DataTable({
+        dom: 'l<"toolbar">frtip',
+        initComplete: function(){
+           $("#materialTable_filter").append('&nbsp <div class="btn-group"> <label class="btn btn-primary btn-sm">'+
+		        '<span class="glyphicon glyphicon-import"></span> Import <input type="file" id="import" style="display: none;">'+
+			    '</label> <a href="addMaterial" class="btn btn-primary btn-sm">'+
+				'<span class="glyphicon glyphicon-plus"></span> Add'+
+				'</a> </div>'); 
+			$("#materialTable_length").css("float","left");
+        }
+     });
+    
+    var importFile = document.getElementById("import");
+	importFile.onclick = function () {
+	    this.value = null;
+	};
 	
-	//Remove Existing Notification
-    var notification = document.getElementById("notification");
-	if (notification != null) {
-		notification.parentNode.removeChild(notification);
-	}
-	
-	if(notificationMessage != ""){
-    	
-        var div = document.createElement("div");
-        div.id = "notification"
-        div.innerHTML = '<div class="alert alert-success" >'
-		  	+ '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
-		  	+ notificationMessage
-			+ '</div>';
-        
-        document.getElementById("notificationArea").appendChild(div);
-    }
-}
+	importFile.onchange = function () {
+	    var notificationMessage = this.value.substr((this.value).lastIndexOf('\\')+1)+" imported successfully"
+	    showNotification(notificationMessage)
+	};
+} );
 </script>
-
-
-
-
+<jsp:directive.include file="include_body_scripts.jsp" />
 </body>
 </html>

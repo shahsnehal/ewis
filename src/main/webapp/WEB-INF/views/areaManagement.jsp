@@ -5,22 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"	rel="stylesheet">
-	<%-- <link href="${pageContext.request.contextPath}/resources/css/customized.css"	rel="stylesheet"> --%>
-	<script	src="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap-contextmenu.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/alert.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<jsp:directive.include file="include_header_scripts.jsp" />
 	<title>Area Management</title>
-	<script type="text/javascript">
-		function form_submit() {
-	    	document.getElementById("areaForm").submit();
-	   	}  
-		function updateAreaSubmit() {
-		    document.getElementById("updateArea").submit();
-		}  
-	</script>
 </head>
 <body>
 
@@ -59,13 +45,7 @@
 			
 			<h2 id="materialList">Area List </h2><br>
 			
-			<div align="right">
-			    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" >
-					<span class="glyphicon glyphicon-plus" ></span> Add
-				</button>
-			</div>
-			
-			<table class="table table-hover" id="materialTable">
+			<table class="table table-striped table-bordered table-hover" id="areaTable">
 		    <thead>
 		      <tr>
 		      	<th>Area ID</th>
@@ -121,7 +101,7 @@
 				      </div>
 				     
 				      <div class="modal-footer">
-				        <button type="submit" class="btn btn-primary" onclick="form_submit()" data-dismiss="modal" id="addBtn" >Add</button>
+				        <button type="submit" class="btn btn-primary btn-sm" onclick="formSubmit('areaForm')" data-dismiss="modal" id="addBtn" >Add</button>
 				      </div>
 			      
 			      </form>
@@ -153,7 +133,7 @@
 				      </div>
 				     
 				      <div class="modal-footer">
-				        <button type="submit" class="btn btn-primary" onclick="updateAreaSubmit()" data-dismiss="modal" >Update</button>
+				        <button type="submit" class="btn btn-primary btn-sm" onclick="formSubmit('updateArea')" data-dismiss="modal" >Update</button>
 				      </div>
 			      
 			      </form>
@@ -169,7 +149,7 @@
 
 $(function () {
 
-	$('#materialTable').contextmenu({
+	$('#areaTable').contextmenu({
         target: '#context-menu',
         scopes: 'tbody > tr',
         onItem: function (row, e) {
@@ -198,27 +178,28 @@ $(function () {
     });
 });
 
-function showNotification(notificationMessage){
+$(document).ready(function() {
+    
+	$('#areaTable').DataTable({
+        dom: 'l<"toolbar">frtip',
+        initComplete: function(){
+          	$("#areaTable_filter").append('&nbsp <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" >'+
+					'<span class="glyphicon glyphicon-plus" ></span> Add </button>'); 
+			$("#areaTable_length").css("float","left");
+        }
+     });
+    
+    var importFile = document.getElementById("import");
+	importFile.onclick = function () {
+	    this.value = null;
+	};
 	
-	//Remove Existing Notification
-    var notification = document.getElementById("notification");
-	if (notification != null) {
-		notification.parentNode.removeChild(notification);
-	}
-	
-	if(notificationMessage != ""){
-    	
-        var div = document.createElement("div");
-        div.id = "notification"
-        div.innerHTML = '<div class="alert alert-success" >'
-		  	+ '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
-		  	+ notificationMessage
-			+ '</div>';
-        
-        document.getElementById("notificationArea").appendChild(div);
-    }
-}
+	importFile.onchange = function () {
+	    var notificationMessage = this.value.substr((this.value).lastIndexOf('\\')+1)+" imported successfully"
+	    showNotification(notificationMessage)
+	};
+} );
 </script>
-
+<jsp:directive.include file="include_body_scripts.jsp" />
 </body>
 </html>

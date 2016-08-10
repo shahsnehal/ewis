@@ -4,10 +4,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"	rel="stylesheet">
+	<jsp:directive.include file="include_header_scripts.jsp" />
 	<link href="${pageContext.request.contextPath}/resources/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-	<script	src="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js"></script> 
-	<script	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap-datepicker/js/moment.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js"></script>
 	
@@ -31,11 +29,9 @@
 			<ol class="breadcrumb">
 			  <li><a href="#">Home</a></li>
 			  <li><a href="${pageContext.request.contextPath}/order">Order</a></li>
-			  <li>Place order</li>
 			</ol>
 			
-			<h2>Place order </h2><br>
-			
+			<br>
 			<form action="newOrderData" method="post">
 			
 			<div class="row">

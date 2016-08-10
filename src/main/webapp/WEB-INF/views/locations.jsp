@@ -6,20 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"	rel="stylesheet">
-	<%-- <link href="${pageContext.request.contextPath}/resources/css/customized.css"	rel="stylesheet"> --%>
-	<script	src="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap-contextmenu.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/alert.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		function addLocationSubmit(){
-			document.getElementById("addLocationForm").submit();
-		}
-		function updateLocationSubmit(){
-			document.getElementById("updateLocationForm").submit();
-		}
-	</script>
+	<jsp:directive.include file="include_header_scripts.jsp" />
 	<title>location</title>
 </head>
 <body>
@@ -59,16 +46,10 @@
 				</div>
 			</div>
 			
-			<h2> Location List </h2><br>
-			<h3> Area name : ${areaName} </h3>
+			<h2> Location List </h2>
+			<h3> Area name : ${areaName} </h3> <br>
 			
-			<div align="right">
-			    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addLocationModal" >
-					<span class="glyphicon glyphicon-plus" ></span> Add
-				</button>
-			</div>
-			
-			<table class="table table-hover" id="materialTable">
+			<table class="table able-striped table-bordered table-hover" id="locationTable">
 		    <thead>
 		      <tr>
 		      	<th>Location ID</th>
@@ -124,7 +105,7 @@
 			      </div>
 			     
 			      <div class="modal-footer">
-			        <button type="submit" class="btn btn-primary" onclick="addLocationSubmit()" data-dismiss="modal" id="addBtn" >Add</button>
+			        <button type="submit" class="btn btn-primary btn-sm" onclick="formSubmit('addLocationForm')" data-dismiss="modal" id="addBtn" >Add</button>
 			      </div>
 			      </form>
 			    </div>
@@ -156,7 +137,7 @@
 			      </div>
 			     
 			      <div class="modal-footer">
-			        <button type="submit" class="btn btn-primary" onclick="updateLocationSubmit()" data-dismiss="modal" >Update</button>
+			        <button type="submit" class="btn btn-primary btn-sm" onclick="formSubmit('updateLocationForm')" data-dismiss="modal" >Update</button>
 			      </div>
 			      </form>
 			    </div>
@@ -171,7 +152,7 @@
 
 $(function () {
 
-	$('#materialTable').contextmenu({
+	$('#locationTable').contextmenu({
         target: '#context-menu',
         scopes: 'tbody > tr',
         onItem: function (row, e) {
@@ -200,27 +181,28 @@ $(function () {
     });
 });
 
-function showNotification(notificationMessage){
+$(document).ready(function() {
+    
+	$('#locationTable').DataTable({
+        dom: 'l<"toolbar">frtip',
+        initComplete: function(){
+           $("#locationTable_filter").append('&nbsp <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addLocationModal" >'+
+					'<span class="glyphicon glyphicon-plus" ></span> Add </button>'); 
+			$("#locationTable_length").css("float","left");
+        }
+     });
+    
+    var importFile = document.getElementById("import");
+	importFile.onclick = function () {
+	    this.value = null;
+	};
 	
-	//Remove Existing Notification
-    var notification = document.getElementById("notification");
-	if (notification != null) {
-		notification.parentNode.removeChild(notification);
-	}
-	
-	if(notificationMessage != ""){
-    	
-        var div = document.createElement("div");
-        div.id = "notification"
-        div.innerHTML = '<div class="alert alert-success" >'
-		  	+ '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
-		  	+ notificationMessage
-			+ '</div>';
-        
-        document.getElementById("notificationArea").appendChild(div);
-    }
-}
+	importFile.onchange = function () {
+	    var notificationMessage = this.value.substr((this.value).lastIndexOf('\\')+1)+" imported successfully"
+	    showNotification(notificationMessage)
+	};
+} );
 </script>
-
+<jsp:directive.include file="include_body_scripts.jsp" />
 </body>
 </html>

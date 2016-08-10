@@ -9,7 +9,7 @@
 	<script	src="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js"></script> 
 	<script src="${pageContext.request.contextPath}/resources/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<script	src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<title>Add Inventory</title>
+	<title>Adjust Inventory</title>
 </head>
 
 <body style="margin: 0">
@@ -30,25 +30,20 @@
 			<ol class="breadcrumb">
 			  <li><a href="#">Home</a></li>
 			  <li><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
-			  <li>Add inventory</li>
+			  <li>Adjust inventory</li>
 			</ol>
 			
-			<h2>Add inventory </h2><br>
+			<h2>Adjust inventory </h2><br>
 			
-			<form action="addInventoryData" method="post">
+			<form action="adjustInventoryData" method="post">
 			
 			<div class="row">
 				<div class="col-sm-6">
 
 					<div class="form-group">
-				      <label>Lot ID:</label>
-				      <input type="text" class="form-control" id="lotID"  value="${lotId}" placeholder="Lot ID">
-				    </div>
-				    
-					<div class="form-group">
 				      <label >Material:</label>
 				      <select class="form-control" name="status">
-							<option value="">Material 1</option>
+							<option value="" selected="selected">Material 1</option>
 							<option value="">Material 2</option>
 							<option value="">Material 3</option>
 							<option value="">Material 4</option>
@@ -56,27 +51,18 @@
 				    </div>
 				    
 				    <div class="form-group">
-				      <label>Area:</label>
-				      <select class="form-control" name="area" id="area">
-						<option value="Area 1" >Area 1</option>
-						<option value="Area 2" >Area 2</option>
-						<option value="Area 3" >Area 3</option>
-						<option value="Area 4" >Area 4</option>
-						<option value="Area 5" >Area 5</option>
-						<option value="Area 6" >Area 6</option>
-					  </select>
+				      <label>Lot ID:</label>
+				      <input type="text" class="form-control" id="lotID" placeholder="Lot ID" value="LOT001">
+				    </div>
+				    
+				    <div class="form-group">
+				      <label>Area </label>
+				      <textarea class="form-control" name="area" placeholder='Area' >Area Detail</textarea>
 				    </div>
 				   
 				   	<div class="form-group">
-				      <label>Location:</label>
-				      <select class="form-control" name="location" id="location">
-						<option value="location 1" >Location 1</option>
-						<option value="location 2" >Location 2</option>
-						<option value="location 3" >Location 3</option>
-						<option value="location 4" >Location 4</option>
-						<option value="location 5" >Location 5</option>
-						<option value="location 6" >Location 6</option>
-					  </select>
+				      <label>Location </label>
+				      <textarea class="form-control" name="Location" placeholder='Location'>Location Detail</textarea>
 				    </div>
 				    
 			    </div>
@@ -85,15 +71,15 @@
 				    
 				    <div class="form-group">
 				      <label>Quantity:</label>
-				      <input type="number"  min="0" class="form-control" value="${quantity}" id="quantity" >
+				      <input type="number"  min="0" class="form-control" id="quantity" value="200">
 				    </div>
 				    
 				    <div class="form-group">
 				      <label >UOM:</label>
 				      <select class="form-control" name="status">
-							<option value="">Measure 1 </option>
+							<option value="" >Measure 1 </option>
 							<option value="">Measure 2 </option>
-							<option value="">Measure 3 </option>
+							<option value="" selected="selected">Measure 3 </option>
 							<option value="">Measure 4 </option>
 						</select>
 				    </div>
@@ -101,17 +87,17 @@
 				    <div class="form-group">
 				      <label>QC Status:</label>
 				      <select class="form-control" name="status">
-							<option value="">Status 1 </option>
+							<option value="" >Status 1 </option>
 							<option value="">Status 2 </option>
 							<option value="">Status 3 </option>
-							<option value="">Status 4 </option>
+							<option value="" selected="selected">Status 4 </option>
 						</select>
 				    </div>
 				</div>
 				
 				</div>
 				
-				<button type="submit" class="btn btn-primary ">Add</button>
+				<button type="submit" class="btn btn-primary ">Update</button>
 				</form>
 				
 			</div>

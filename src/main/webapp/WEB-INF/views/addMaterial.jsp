@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,18 +53,18 @@
 
 				    <div class="form-group">
 				      <label >Material Name:</label>
-				      <input type="text" class="form-control" id="materialName" placeholder="Material name">
+				      <input type="text" name="name" class="form-control" id="materialName" value="${material.name}" placeholder="Material name">
 				    </div>
 				    
 				    <div class="form-group">
 				      <label>Description:</label>
-				      <textarea class="form-control" name="description" placeholder='Material Discription'></textarea>
+				      <textarea class="form-control" name="discription"  placeholder='Material Discription'>${material.discription}</textarea>
 				    </div>
 				   
 				    <div class="form-group">
 				      <label >Status:</label>
 				      <select class="form-control" name="status">
-							<option value="new">New</option>
+							<option value="new" >New</option>
 							<option value="absolute">Absolute</option>
 						</select>
 				    </div>
@@ -71,14 +72,14 @@
 				    <div class="form-group">
 				      <label >Effective Date:</label>
 				      <div class="input-append date" id="dp3" data-date-format="mm/dd/yyyy">
-				      	<input type="text" class="form-control" name="effectiveDate" id="effectiveDate">
+				      	<input type="text" class="form-control" name="effactiveDate" value="${material.effactiveDate}" id="effectiveDate">
 				      </div>
 				    </div>
 				    
 				    <div class="form-group">
 				      <label >Expiration Date:</label>
 				      <div class="input-append date " id="dp3" data-date-format="mm/dd/yyyy">
-				      	<input type="text" class="form-control" name="expirationDate" id="expirationDate">
+				      	<input type="text" class="form-control" name="expirationDate" value="${material.expirationDate}" id="expirationDate">
 				      </div>
 				    </div>
 				</div>
@@ -86,12 +87,12 @@
 				 			 
 				     <div class="form-group">
 				      <label>Default Quantity:</label>
-				      <input type="number"  min="0" class="form-control" id="defaultQuantity" >
+				      <input type="number" name="quantity" min="0" class="form-control" value="${material.quantity}" id="quantity" >
 				    </div>
 				    
 				    <div class="form-group">
 				      <label>Material type:</label>
-				      <select class="form-control" name="materialType">
+				      <select class="form-control" name="type">
 							<option value="Type1">Type1</option>
 							<option value="type2">type2</option>
 							<option value="type3">type3</option>

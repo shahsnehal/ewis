@@ -1,4 +1,21 @@
 @CHARSET "ISO-8859-1";
-* {
+/* * {
   border-radius: 0 !important;
+} */
+#contextMenu{
+    position: absolute;
+    display:none;
 }
+.toolbar {
+   	float:right;
+}
+.dropdown-menu>li>a:hover, 
+.dropdown-menu>li>a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #428bca;
+    cursor : pointer;
+}
+.affix {
+    top: 20px;
+ }
