@@ -29,41 +29,26 @@ function addRow(tableID) {
 	var row = table.insertRow(rowCount);
 
 	var cell1 = row.insertCell(0);
-	var element1 = document.createElement("input");
-	element1.type = "text";
-	element1.name = "fullName";
-	/*element1.placeholder = "Full Name";*/
-	element1.className = "form-control"
-	cell1.appendChild(element1);
-
+	cell1.innerHTML = '<input type="radio" name="yield">' 	
+		
 	var cell2 = row.insertCell(1);
-	var element2 = document.createElement("input");
-	element2.type = "number";
-	element2.name = "ownership";
-	/*element2.placeholder = "Owner Ship";*/
-	element2.className = "form-control"
-	cell2.appendChild(element2);
-
+	cell2.innerHTML = '<select class="form-control" name="lot[]">'+
+									'<option value="">Lot 1</option>'+
+									'<option value="">Lot 2</option>'+
+									'<option value="">Lot 3</option>'+
+									'<option value="">Lot 4</option>'+
+								'</select>'
+	
 	var cell3 = row.insertCell(2);
-	var element3 = document.createElement("input");
-	element3.type = "text";
-	element3.name = "nationality";
-	/*element3.placeholder = "Nationality";*/
-	element3.className = "form-control"
-	cell3.appendChild(element3);
+	cell3.innerHTML = Math.floor(Math.random() * 100) + 1  
 
 	var cell4 = row.insertCell(3);
-	var element4 = document.createElement("button");
-	element4.type = "button";
-	element4.name = "clear";
-	element4.className = "btn btn-danger btn-sm"
-	element4.onclick = function() {
-		deleteRow(this, 'shareHolderTable')
-	}
-	element4.innerHTML = '<span class="glyphicon glyphicon-remove"></span>'
+	cell4.innerHTML = '<input type="number"  min="0" max="" class="form-control" id="quantity" >' 
+		
+	var cell5 = row.insertCell(4);
+	cell5.innerHTML = '<button type="button" class="removeMaterialForm btn btn-danger btn-sm " style="display: inline-block;"><span class="glyphicon glyphicon-remove"></span></button>'
 
-	cell4.appendChild(element4);
-
+	
 }
 function deleteRow(row, tableId) {
 	var i = row.parentNode.parentNode.rowIndex;
@@ -112,4 +97,7 @@ function showNotification(notificationMessage){
 
 function formSubmit(formId) {
 	document.getElementById(formId).submit();
+}
+function setActiveMenu(menuId) {
+	document.getElementById(menuId).className += " active";
 }

@@ -2,9 +2,15 @@
 <material>
 	<materialID>MA001SA</materialID>
 	<materialName>Material 1</materialName>
+	<detail>Material 1</detail>
+	<type>type1</type>
+	<recipeVersion>3.02</recipeVersion>
+	<defaultQuantity>10</defaultQuantity>
 	<status>New</status>
+	<storageClass>class3</storageClass>
 	<effectiveDate>08/01/2016</effectiveDate>
 	<expirationDate>09/20/2016</expirationDate>
+	<createDate>09/20/2016</createDate>
 	<lastChangedDate>08/01/2016</lastChangedDate>
 	<lastChangedBy>User1</lastChangedBy>
 </material>

@@ -6,6 +6,9 @@
 <html>
 <head>
 	<jsp:directive.include file="include_header_scripts.jsp" />
+	<link href="${pageContext.request.contextPath}/resources/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath}/resources/bootstrap-datepicker/js/moment.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js"></script>
 	<title>Order Management</title>
 </head>
 <body style="margin: 0">
@@ -14,15 +17,9 @@
 	<div class="container-fluid">
 	<div class="row">
 	
-		<div class="col-sm-2">
-			<ul class="nav nav-pills nav-stacked">
-			    <li><a href="#">Home</a></li>
-			    <li><a href="${pageContext.request.contextPath}/material">Material </a></li>
-			    <li><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
-			    <li class="active"><a href="${pageContext.request.contextPath}/order">Order Management </a></li>
-			    <li><a href="${pageContext.request.contextPath}/areaManagement">Area Management </a></li>
-			 </ul>
-		</div>
+		<jsp:include page="leftNavigation.jsp">
+			<jsp:param value="orderManagementMenu" name="selectMenuItem"/>
+		</jsp:include>
 	
 		<div class="col-sm-10">
 		
@@ -51,7 +48,6 @@
 		      	<th>Order status</th>
 		      	<th>Material ID</th>
 		        <th>Material Name</th>
-		        <th>Recipe/Version</th>
 		        <th>Quantity</th>
 		        <th>Begin date</th>
 		        <th>End date</th>
@@ -64,7 +60,6 @@
 		      	<td>New</td>
 		        <td>MA001CE</td>
 		        <td>Material 1</td>
-		        <td>1.0</td>
 		        <td>400 ml</td>
 		        <td>08/03/2016 01:00 PM</td>
 		        <td>09/20/2016 12:00 AM</td>
@@ -75,7 +70,6 @@
 		      	<td>Executed</td>
 		        <td>MA002RA</td>
 		        <td>Material 2</td>
-		        <td>2.5</td>
 		        <td>200 kg</td>
 		        <td>08/03/2016 01:00 PM</td>
 		        <td>09/20/2016 12:00 AM</td>
@@ -86,7 +80,6 @@
 		      	<td>Closed</td>
 		        <td>MA003DA</td>
 		        <td>Material 3</td>
-		        <td>1.7</td>
 		        <td>200 kg</td>
 		        <td>08/03/2016 01:00 PM</td>
 		        <td>09/20/2016 12:00 AM</td>
@@ -127,7 +120,6 @@
 				    <label>Order status : </label> <span>New</span><br>
 				    <label>Material ID :</label> <span>MA001CE</span><br>
 				    <label>Material Name :</label> <span>	Material 1</span><br>
-				    <label>Recipe/Version :</label> <span>ancdf</span><br>
 				    <label>Quantity :</label> <span>400 ml</span><br>
 				    <label>Begin date :</label> <span>08/03/2016 01:00 PM</span><br>
 				    <label>End date :</label> <span>09/20/2016 12:00 AM	</span><br>
@@ -144,6 +136,58 @@
 			  </div>
 			</div>
 	      
+	      
+	      <div id="executeModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+			
+			    <div class="modal-content">
+			    	
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Execute Order</h4>
+			      </div>
+			     
+			      <div class="modal-body">
+			        
+			        <label>Order ID : </label> <span>ORD001A</span><br>
+				    <label>Order status : </label> <span>New</span><br>
+				    <label>Material ID :</label> <span>MA001CE</span><br>
+				    <label>Material Name :</label> <span>Material 1</span><br>
+				    <label>Quantity :</label> <span>400 Unit</span><br>
+				    <label>Begin date :</label> <span>08/03/2016 01:00 PM</span><br>
+				    <label>End date :</label> <span>09/20/2016 12:00 AM	</span><br>
+				    <label>Created date :</label> <span>08/01/2016 04:50 PM</span><br>
+				    <hr>
+				    
+				    <form id="executeOrder" action="equipmentCheckin">
+				    	
+				    	 <div class="form-group">
+					      <label>Lot ID:</label>
+					      <input type="text" class="form-control" id="lotId" >
+					    </div>
+				    
+				    	<div class="form-group">
+					      <label>Expiration date:</label>
+					      <div class='input-group date' id='expirationDate'>
+				               <input type='text' class="form-control" />
+				               <span class="input-group-addon">
+				                   <span class="glyphicon glyphicon-calendar"></span>
+				               </span>
+				           </div>
+					    </div>	
+				    </form>
+				    
+			      </div>
+			     
+			      <div class="modal-footer">
+			        <button type="submit" class="btn btn-primary btn-sm" data-dismiss="modal" onclick="formSubmit('executeOrder')">Execute</button>
+			      </div>
+			      
+			    </div>
+			
+			  </div>
+			</div>
+			
 		 </div>
 	</div>
 	</div>
@@ -163,7 +207,11 @@ $(function () {
         	var notificationMessage = "";
         	
             if(action == "Execute"){
-            	notificationMessage = "Order " + name + " executed successfully";
+            	$('#executeModal').on('show.bs.modal', function (event) {
+            		  var modal = $(this)
+            		})
+            	$('#executeModal').modal('toggle');
+            	//notificationMessage = "Order " + name + " executed successfully";
             }else if(action == "Hold Order"){
             	notificationMessage = "Order " + name + " Kept on hold";
             }else if(action == "Resume Order"){
@@ -181,12 +229,11 @@ $(function () {
           		  var modal = $(this)
           		  modal.find('.modal-title').text("Order " + action)
           		})
-          	$('#myModal').modal('toggle');
+          		$('#myModal').modal('toggle');
             }
             
             showNotification(notificationMessage)
             
-            //alert('You right clicked on ' + name + '\'s row and selected menu item "' + action  + '".');
         }
     });
 });
@@ -202,6 +249,9 @@ $(document).ready(function() {
 			$("#orderTable_length").css("float","left");
         }
      });
+	 $('#expirationDate').datetimepicker({
+			format: 'MM/DD/YYYY'
+	 });
 } );
 </script>
 <jsp:directive.include file="include_body_scripts.jsp" />

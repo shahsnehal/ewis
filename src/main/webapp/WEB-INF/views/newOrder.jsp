@@ -16,15 +16,11 @@
 	 
 	<div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-2">
-			<ul class="nav nav-pills nav-stacked">
-			    <li><a href="#">Home</a></li>
-			    <li><a href="${pageContext.request.contextPath}/material">Material </a></li>
-			    <li><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
-			    <li class="active"><a href="${pageContext.request.contextPath}/order">Order Management </a></li>
-			    <li><a href="${pageContext.request.contextPath}/areaManagement">Area Management </a></li>
-			 </ul>
-		</div>
+		
+		<jsp:include page="leftNavigation.jsp">
+			<jsp:param value="orderManagementMenu" name="selectMenuItem"/>
+		</jsp:include>
+		
 		<div class="col-sm-10">
 			<ol class="breadcrumb">
 			  <li><a href="#">Home</a></li>
@@ -48,11 +44,6 @@
 				    </div>
 				    
 				    <div class="form-group">
-				      <label >Recipe/Version:</label>
-				      <input type="text" class="form-control" id="recipeVersion" placeholder="Recipe/Version">
-				    </div>
-				    
-				    <div class="form-group">
 				      <label>Quantity:</label>
 				      <input type="number"  min="0" class="form-control" id="quantity" >
 				    </div>
@@ -67,9 +58,6 @@
 						</select>
 				    </div>
 				    
-				</div>
-				<div class="col-sm-6">
-				 	
 				     <div class="form-group">
 				      <label>Begin date:</label>
 				      <div class='input-group date' id='beginDate'>

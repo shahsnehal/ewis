@@ -15,15 +15,9 @@
 	<div class="container-fluid">
 	<div class="row">
 	
-		<div class="col-sm-2">
-			<ul class="nav nav-pills nav-stacked">
-			    <li><a href="#">Home</a></li>
-			    <li><a href="${pageContext.request.contextPath}/material">Material </a></li>
-			    <li><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
-			    <li><a href="${pageContext.request.contextPath}/order">Order Management </a></li>
-			    <li class="active"><a href="${pageContext.request.contextPath}/areaManagement">Area Management </a></li>
-			 </ul>
-		</div>
+		<jsp:include page="leftNavigation.jsp">
+			<jsp:param value="areaManagementMenu" name="selectMenuItem"/>
+		</jsp:include>
 	
 		<div class="col-sm-10">
 		

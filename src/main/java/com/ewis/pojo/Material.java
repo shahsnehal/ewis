@@ -10,6 +10,8 @@ public class Material {
 	
 	private String status;
 	
+	private String racipe;
+	
 	private String effactiveDate;
 	
 	private String expirationDate;
@@ -54,6 +56,14 @@ public class Material {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getRacipe() {
+		return racipe;
+	}
+
+	public void setRacipe(String racipe) {
+		this.racipe = racipe;
 	}
 
 	public String getEffactiveDate() {

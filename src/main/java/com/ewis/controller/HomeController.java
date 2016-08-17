@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,21 +34,34 @@ public class HomeController {
 
 		log.info(this.getClass().getName() + "Method : home ---->  Exit");
 
-		return new ModelAndView("home");
+		return new ModelAndView("redirect:/login");
 	}
 	
-	/**
-	 * 
-	 * @param modelMap
-	 * @return
-	 */
+	@RequestMapping(value = "/login", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView login(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : login ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : login ---->  Exit");
+
+		return new ModelAndView("login");
+	}
+	
+	@RequestMapping(value = "/loginVarification", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView loginVarification(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : loginVarification ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : loginVarification ---->  Exit");
+
+		return new ModelAndView("redirect:/material");
+	}
+	
 	@RequestMapping(value = "/material", method = {RequestMethod.GET,RequestMethod.POST})
 	public String material(ModelMap modelMap) {
 		log.info(this.getClass().getName() + "Method : material ---->  Enter");
 
 		log.info(this.getClass().getName() + "Method : material ---->  Exit");
 
-		return "home";
+		return "material";
 	}
 	
 	/**
@@ -275,6 +289,48 @@ public class HomeController {
 	 * @param modelMap
 	 * @return
 	 */
+	@RequestMapping(value = "/equipmentCheckin", method = {RequestMethod.GET,RequestMethod.POST})
+	public String equipmentCheckin(HttpServletRequest request, HttpServletResponse response) {
+		log.info(this.getClass().getName() + "Method : equipmentCheckin ---->  Enter");
+		System.out.println(this.getClass().getName() + "Method : equipmentCheckin");
+		log.info(this.getClass().getName() + "Method : equipmentCheckin ---->  Exit");
+
+		return "equipmentCheckin";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/materialCheckin", method = {RequestMethod.GET,RequestMethod.POST})
+	public String materialCheckin(HttpServletRequest request, HttpServletResponse response) {
+		log.info(this.getClass().getName() + "Method : materialCheckin ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : materialCheckin ---->  Exit");
+
+		return "materialCheckin";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/doubleVerification", method = {RequestMethod.GET,RequestMethod.POST})
+	public String doubleVerification(HttpServletRequest request, HttpServletResponse response) {
+		log.info(this.getClass().getName() + "Method : doubleVerification ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : doubleVerification ---->  Exit");
+
+		return "doubleVerification";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
 	@RequestMapping(value = "/areaManagement", method = {RequestMethod.GET,RequestMethod.POST})
 	public String areaManagement(ModelMap modelMap) {
 		log.info(this.getClass().getName() + "Method : areaManagement ---->  Enter");
@@ -284,6 +340,64 @@ public class HomeController {
 		return "areaManagement";
 	}
 	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/pallete", method = {RequestMethod.GET,RequestMethod.POST})
+	public String pallete(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : pallete ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : pallete ---->  Exit");
+
+		return "pallete";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/createPallete", method = {RequestMethod.GET,RequestMethod.POST})
+	public String createPallete(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : createPallete ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : createPallete ---->  Exit");
+
+		return "createPallete";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/addPallete", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView addPallete(ModelMap modelMap , RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : addPallete ---->  Enter");
+		
+		redirectAttributes.addFlashAttribute("message", "New pallete crated");
+		
+		log.info(this.getClass().getName() + "Method : addPallete ---->  Exit");
+
+		
+		return new RedirectView("pallete", true);
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/supervisorVerification", method = {RequestMethod.GET,RequestMethod.POST})
+	public String supervisorVerification(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : supervisorVerification ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : supervisorVerification ---->  Exit");
+
+		return "supervisorVerification";
+	}
 	/**
 	 * 
 	 * @param modelMap
