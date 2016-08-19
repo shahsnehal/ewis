@@ -20,7 +20,7 @@
 		<div class="col-sm-10">
 		
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
+			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 			  <li><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
 			  <li>Container</li>
 			</ol>

@@ -19,7 +19,7 @@
 		<div class="col-sm-10">
 		
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
+			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 			  <li>Material</li>
 			</ol>
 			
@@ -52,33 +52,33 @@
 		    <tbody>
 		      <tr>
 		        <td>MA001SA</td>
-		        <td>Material 1</td>
-		        <td>Type1</td>
+		        <td>Unlablled Vial</td>
+		        <td>End Item</td>
 		        <td>1.2</td>
 		        <td>New</td>
 		        <td>09/20/2016</td>
 		        <td>08/01/2016</td>
-		        <td>User1</td>
+		        <td>Snehal</td>
 		      </tr>
 		      <tr>
 		        <td>MA002SA</td>
-		        <td>Material 2</td>
-		        <td>Type2</td>
+		        <td>Product lable</td>
+		        <td>Raw Material</td>
 		        <td></td>
 		        <td>New</td>
 		        <td>04/30/2017</td>
 		        <td>08/04/2016</td>
-		        <td>User2</td>
+		        <td>Kushal</td>
 		      </tr>
 		      <tr>  
 		        <td>MA003SA</td>
-		        <td>Material 3</td>
-		        <td>Type1</td>
+		        <td>Carton</td>
+		        <td>Intermediate</td>
 		        <td>3.04</td>
 		        <td>Obsolete</td>
 		        <td>02/01/2017</td>
 		        <td>08/01/2016</td>
-		        <td>User3</td>
+		        <td>Snehal</td>
 		      </tr>
 		    </tbody>
 		  </table>

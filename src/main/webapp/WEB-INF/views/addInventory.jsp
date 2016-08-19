@@ -20,7 +20,7 @@
 		
 		<div class="col-sm-10">
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
+			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 			  <li><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
 			  <li>Add inventory</li>
 			</ol>
@@ -40,10 +40,9 @@
 					<div class="form-group">
 				      <label >Material:</label>
 				      <select class="form-control" name="status">
-							<option value="">Material 1</option>
-							<option value="">Material 2</option>
-							<option value="">Material 3</option>
-							<option value="">Material 4</option>
+							<option value="">Carton</option>
+							<option value="">Product lable</option>
+							<option value="">Unlablled Vial</option>
 						</select>
 				    </div>
 				    

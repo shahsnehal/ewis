@@ -20,7 +20,7 @@
 		<div class="col-sm-10">
 		
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
+			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 			  <li><a href="${pageContext.request.contextPath}/material">Material</a></li>
 			  <li>Material Attributes</li>
 			</ol>
@@ -28,9 +28,9 @@
 			<h2>Material Attributes </h2><br>
 			
 			<p>Material ID : MA001SA</p>
-			<p>Material Name : Material 1</p>
+			<p>Material Name : Unlablled Vial</p>
 			<p>Detail : This is material detail.</p>
-			<p>Material type: : Type1</p>
+			<p>Material type: : End Item</p>
 			<p>Default Quantity: : 10</p>
 			<p>Status : New</p>
 			<p>Recipe/Version : 3.02</p>
@@ -39,7 +39,7 @@
 			<p>Expiration Date : 09/20/2016</p>
 			<p>Create date : 07/31/2016</p>
 			<p>Last changed date : 08/01/2016</p>
-			<p>Last changed by : User1</p>
+			<p>Last changed by : Snehal</p>
 			<br>
 			<a href="material" class="btn btn-primary btn-sm" >
 					<span class="glyphicon glyphicon-arrow-left"></span> Back

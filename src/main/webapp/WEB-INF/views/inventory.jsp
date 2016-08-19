@@ -22,7 +22,7 @@
 		<div class="col-sm-10">
 		
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
+			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 			  <li>Inventory</li>
 			</ol>
 			
@@ -52,7 +52,7 @@
 		    </thead>
 		    <tbody>
 		      <tr>
-		      	<td>LOT001</td>
+		      	<td>12345</td>
 		      	<td>MA002SA</td>
 		      	<td>200</td>
 		        <td>Area 1</td>
@@ -60,7 +60,7 @@
 		        <td>Status 1</td>
 		      </tr>
 		      <tr>
-		      	<td>LOT002</td>
+		      	<td>35412</td>
 		      	<td>MA002RA</td>
 		      	<td>300</td>
 		       <td>Area 2</td>
@@ -68,7 +68,7 @@
 		        <td>Status 3</td>
 		      </tr>
 		      <tr>
-		      	<td>LOT003</td>
+		      	<td>23456</td>
 		      	<td>MA003DY</td>
 		      	<td>800</td>
 		        <td>Area 5</td>

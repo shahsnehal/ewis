@@ -20,7 +20,7 @@
 		<div class="col-sm-10">
 		
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
+			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 			  <li><a href="${pageContext.request.contextPath}/order">Order</a></li>
 			  <li>Equipment Checkin</li>
 			</ol>
@@ -82,6 +82,34 @@
 			<div class="row">
 			
 			<div class="col-sm-12">
+				
+					<div class="panel panel-default">
+					  <div class="panel-heading">Lot Detail</div>
+					  <div class="panel-body">
+					  
+					  <table class="table table-borderless">
+					  	<thead>
+						    <tr>
+					      	<th>Lot ID</th>
+					     	<th>Expiration date</th>
+					     	<th>Execution date</th>
+				   	 		<th>Execution By</th>
+				     		</tr>
+						  </thead>
+						  <tbody>
+						    <tr >
+						      <td>123456</td>
+						      <td>08/14/2020</td>
+						      <td>08/04/2016 04:00 PM</td>
+			      			  <td>Kushal</td>
+						    </tr>
+						   </tbody>
+					  </table>
+					  </div>
+					</div>
+				</div>
+			
+			<div class="col-sm-12">
 			
 				<div class="panel panel-default">
 				  <div class="panel-heading">Order Detail</div>
@@ -98,6 +126,7 @@
 					    <th>Begin date</th>
 					    <th>End date</th>
 					    <th>Created date</th>
+					    <th>Order By</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -105,11 +134,12 @@
 					      <td>ORD001A</td>
 					      <td>New</td>
 					      <td>MA001CE</td>
-					      <td>Material 1</td>
+					      <td>Unlablled Vial</td>
 					      <td>400 Unit</td>
 					      <td>08/03/2016 01:00 PM</td>
 					      <td>09/20/2016 12:00 AM </td>
 					      <td>08/01/2016 04:50 PM</td>
+					      <td>Snehal</td>
 					    </tr>
 					   </tbody>
 					  </table>

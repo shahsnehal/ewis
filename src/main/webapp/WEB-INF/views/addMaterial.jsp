@@ -32,7 +32,7 @@
 	
 		<div class="col-sm-10">
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
+			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 			  <li><a href="${pageContext.request.contextPath}/material">Material</a></li>
 			  <li>Add material</li>
 			</ol>
@@ -57,9 +57,9 @@
 				   <div class="form-group">
 				      <label>Material type:</label>
 				      <select class="form-control" name="type">
-							<option value="Type1">Type1</option>
-							<option value="type2">type2</option>
-							<option value="type3">type3</option>
+				      		<option value="type2">End Item</option>
+							<option value="Type1">Intermediate</option>
+							<option value="type3">Raw Material</option>
 						</select>
 				    </div>
 				    

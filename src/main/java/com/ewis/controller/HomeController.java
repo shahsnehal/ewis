@@ -29,12 +29,24 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView root(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : root ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : root ---->  Exit");
+
+		return new ModelAndView("redirect:/login");
+	}
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home(ModelMap modelMap) {
 		log.info(this.getClass().getName() + "Method : home ---->  Enter");
 
 		log.info(this.getClass().getName() + "Method : home ---->  Exit");
 
-		return new ModelAndView("redirect:/login");
+		return new ModelAndView("redirect:/material");
 	}
 	
 	@RequestMapping(value = "/login", method = {RequestMethod.GET,RequestMethod.POST})
@@ -84,13 +96,13 @@ public class HomeController {
 		
 		Material material = new Material();
 		
-		material.setName("Material1");
+		material.setName("Unlablled Vial");
 		material.setDiscription("Material disctiption");
 		material.setStatus("New");
 		material.setEffactiveDate("09/20/2016");
 		material.setExpirationDate("08/01/2016");
 		material.setQuantity("200");
-		material.setType("Type1");
+		material.setType("Raw Material");
 		material.setStorageClass("Storage Class 1");
 		request.setAttribute("material", material);
 		

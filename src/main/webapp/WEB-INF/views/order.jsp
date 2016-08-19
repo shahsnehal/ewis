@@ -24,7 +24,7 @@
 		<div class="col-sm-10">
 		
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
+			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 			  <li>Order</li>
 			</ol>
 			
@@ -52,6 +52,7 @@
 		        <th>Begin date</th>
 		        <th>End date</th>
 		        <th>Created date</th>
+		        <th>Order By</th>
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -59,31 +60,34 @@
 		      	<td>ORD001A</td>
 		      	<td>New</td>
 		        <td>MA001CE</td>
-		        <td>Material 1</td>
-		        <td>400 ml</td>
+		        <td>Unlablled Vial</td>
+		        <td>400 Unit</td>
 		        <td>08/03/2016 01:00 PM</td>
 		        <td>09/20/2016 12:00 AM</td>
 		        <td>08/01/2016 04:50 PM</td>
+		        <td>Snehal</td>
 		      </tr>
 		      <tr>
 		      	<td>ORD002V</td>
 		      	<td>Executed</td>
 		        <td>MA002RA</td>
-		        <td>Material 2</td>
-		        <td>200 kg</td>
+		        <td>Product lable</td>
+		        <td>200 Unit</td>
 		        <td>08/03/2016 01:00 PM</td>
 		        <td>09/20/2016 12:00 AM</td>
 		        <td>08/01/2016 04:50 PM</td>
+		        <td>Kushal</td>
 		      </tr>
 	     	  <tr>
 		      	<td>ORD003C</td>
 		      	<td>Closed</td>
 		        <td>MA003DA</td>
-		        <td>Material 3</td>
-		        <td>200 kg</td>
+		        <td>Carton</td>
+		        <td>200 Unit</td>
 		        <td>08/03/2016 01:00 PM</td>
 		        <td>09/20/2016 12:00 AM</td>
 		        <td>08/01/2016 04:50 PM</td>
+		        <td>Jignesh</td>
 		      </tr>
 		    </tbody>
 		  </table>
@@ -115,15 +119,56 @@
 			      </div>
 			     
 			      <div class="modal-body">
+			      
+			      <table class="table table-borderless">
+			      <tbody>
+			     		<tr>
+			     			<td>Order ID :</td>
+			     			<td>ORD001A</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Order status :</td>
+			     			<td>New</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Material ID :</td>
+			     			<td>MA001CE</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Material Name :</td>
+			     			<td>Unlablled Vial</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Quantity :</td>
+			     			<td>400 Unit</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Begin date :</td>
+			     			<td>08/03/2016 01:00 PM</td>
+			     		</tr>
+			     		<tr>
+			     			<td>End date :</td>
+			     			<td>09/20/2016 12:00 AM</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Created date :</td>
+			     			<td>08/01/2016 04:50 PM</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Order By</td>
+			     			<td>Snehal</td>
+			     		</tr>
+			      </tbody>
+			      </table>
 			        
-			        <label>Order ID : </label> <span>ORD001A</span><br>
+			       <!--  <label>Order ID : </label> <span>ORD001A</span><br>
 				    <label>Order status : </label> <span>New</span><br>
 				    <label>Material ID :</label> <span>MA001CE</span><br>
-				    <label>Material Name :</label> <span>	Material 1</span><br>
-				    <label>Quantity :</label> <span>400 ml</span><br>
+				    <label>Material Name :</label> <span>Unlablled Vial</span><br>
+				    <label>Quantity :</label> <span>400 Unit </span><br>
 				    <label>Begin date :</label> <span>08/03/2016 01:00 PM</span><br>
 				    <label>End date :</label> <span>09/20/2016 12:00 AM	</span><br>
-				    <label>Created date :</label> <span>08/01/2016 04:50 PM</span><br>
+				    <label>Created date :</label> <span>08/01/2016 04:50 PM</span><br> -->
 				    
 			      </div>
 			     
@@ -149,15 +194,39 @@
 			     
 			      <div class="modal-body">
 			        
-			        <label>Order ID : </label> <span>ORD001A</span><br>
-				    <label>Order status : </label> <span>New</span><br>
-				    <label>Material ID :</label> <span>MA001CE</span><br>
-				    <label>Material Name :</label> <span>Material 1</span><br>
-				    <label>Quantity :</label> <span>400 Unit</span><br>
-				    <label>Begin date :</label> <span>08/03/2016 01:00 PM</span><br>
-				    <label>End date :</label> <span>09/20/2016 12:00 AM	</span><br>
-				    <label>Created date :</label> <span>08/01/2016 04:50 PM</span><br>
-				    <hr>
+			       <table class="table table-borderless">
+			      <tbody>
+			     		<tr>
+			     			<td>Order ID :</td>
+			     			<td>ORD001A</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Order status :</td>
+			     			<td>New</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Material ID :</td>
+			     			<td>MA001CE</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Material Name :</td>
+			     			<td>Unlablled Vial</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Quantity :</td>
+			     			<td>400 Unit</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Created date :</td>
+			     			<td>08/01/2016 04:50 PM</td>
+			     		</tr>
+			     		<tr>
+			     			<td>Order By</td>
+			     			<td>Snehal</td>
+			     		</tr>
+			      </tbody>
+			      </table>
+			      <hr>
 				    
 				    <form id="executeOrder" action="equipmentCheckin">
 				    	

@@ -19,7 +19,7 @@
 		<div class="col-sm-10">
 		
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
+			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
 			  <li><a href="${pageContext.request.contextPath}/order">Order</a></li>
 			  <li><a href="${pageContext.request.contextPath}/equipmentCheckin">Equipment Checkin</a></li>
 			  <li><a href="${pageContext.request.contextPath}/materialCheckin">Material Checkin</a></li>
@@ -49,9 +49,72 @@
 				  <div class="panel-heading">Create Pallet</div>
 				  <div class="panel-body">
 				  
+				  <table class="table table-borderless" >
+				  <thead>
+				    <tr>
+			    	  <th>Material</th>
+				      <th>Lot</th>
+				      <th>Assigned Quantity</th>
+				      <th>Quantity</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<tr>
+				  		<td>Unlablled Vial</td>
+				  		<td>345678</td>
+				  		<td>50</td>
+				  		<td><input type="number"  min="0" class="form-control"></td>
+				  	</tr>
+				  	<tr>
+				  		<td></td>
+				  		<td>345689</td>
+				  		<td>80</td>
+				  		<td><input type="number"  min="0" class="form-control"></td>
+				  	</tr>
+				  	<tr>
+				  		<td></td>
+				  		<td>348812</td>
+				  		<td>30</td>
+				  		<td><input type="number"  min="0" class="form-control"></td>
+				  	</tr>
+				  	<tr>
+				  		<td>Carton</td>
+				  		<td>456789</td>
+				  		<td>43</td>
+				  		<td><input type="number"  min="0" class="form-control"></td>
+				  	</tr>
+				  	<tr>
+				  		<td></td>
+				  		<td>456699</td>
+				  		<td>48</td>
+				  		<td><input type="number"  min="0" class="form-control"></td>
+				  	</tr>
+				  	<tr>
+				  		<td>Product Lable</td>
+				  		<td>56789</td>
+				  		<td>125</td>
+				  		<td><input type="number"  min="0" class="form-control"></td>
+				  	</tr>
+				  	<tr>
+				  		<td></td>
+				  		<td>56770</td>
+				  		<td>38</td>
+				  		<td><input type="number"  min="0" class="form-control"></td>
+				  	</tr>
+				  	<tr>
+				  		<td></td>
+				  		<td>56119</td>
+				  		<td>65</td>
+				  		<td><input type="number"  min="0" class="form-control"></td>
+				  	</tr>
+				  
+				    <tr >
+					 				   			     	
+				   </tbody>
+				</table>
 				  
 				
-					<table class="table table-borderless" id="materialLotTable">
+					<!-- <table class="table table-borderless" id="materialLotTable">
 					  <thead>
 					    <tr>
 					      <th>Lot</th>
@@ -88,7 +151,7 @@
 					    </tr>
 					   			     	
 					   </tbody>
-					</table>
+					</table> -->
 				  </div>
 				</div>
 							
@@ -125,7 +188,7 @@
 			</div>
 			 
 		
-			</div>
+			</div><br><br>
 			</form>
 			
 		</div>

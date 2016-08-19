@@ -6,7 +6,7 @@
 <body>
 	<div class="leftMenubar col-sm-2">	
 		<ul class="nav nav-pills nav-stacked" >
-		    <li id="homeMenu"><a href="#">Home</a></li>
+		    <li id="homeMenu"><a href="${pageContext.request.contextPath}/home">Home</a></li>
 		    <li id="materialMenu"><a href="${pageContext.request.contextPath}/material">Material </a></li>
 		    <li id="inventoryMenu"><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
 		    <li id="orderManagementMenu"><a href="${pageContext.request.contextPath}/order">Order Management </a></li>

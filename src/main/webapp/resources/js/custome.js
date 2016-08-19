@@ -27,26 +27,34 @@ function addRow(tableID) {
 	var table = document.getElementById(tableID);
 	var rowCount = table.rows.length;
 	var row = table.insertRow(rowCount);
+	var col = 0;
 
-	var cell1 = row.insertCell(0);
-	cell1.innerHTML = '<input type="radio" name="yield">' 	
+	var yield = row.insertCell(col++);
+	yield.innerHTML = '<input type="radio" name="yield">' 	
 		
-	var cell2 = row.insertCell(1);
-	cell2.innerHTML = '<select class="form-control" name="lot[]">'+
-									'<option value="">Lot 1</option>'+
-									'<option value="">Lot 2</option>'+
-									'<option value="">Lot 3</option>'+
-									'<option value="">Lot 4</option>'+
+	var material = row.insertCell(col++);
+	material.innerHTML = '<select class="form-control" name="material[]">'+
+									'<option value="">Carton</option>'+
+									'<option value="">Product Lable</option>'+
+									'<option value="">Unlablled Vial</option>'+
+								'</select>'
+		
+	var lot = row.insertCell(col++);
+	lot.innerHTML = '<select class="form-control" name="lot[]">'+
+									'<option value="">12345</option>'+
+									'<option value="">4567</option>'+
+									'<option value="">10230</option>'+
+									'<option value="">32415</option>'+
 								'</select>'
 	
-	var cell3 = row.insertCell(2);
-	cell3.innerHTML = Math.floor(Math.random() * 100) + 1  
+	var qty = row.insertCell(col++);
+	qty.innerHTML = Math.floor(Math.random() * 100) + 1  
 
-	var cell4 = row.insertCell(3);
-	cell4.innerHTML = '<input type="number"  min="0" max="" class="form-control" id="quantity" >' 
+	var assignQty = row.insertCell(col++);
+	assignQty.innerHTML = '<input type="number"  min="0" max="" class="form-control">' 
 		
-	var cell5 = row.insertCell(4);
-	cell5.innerHTML = '<button type="button" class="removeMaterialForm btn btn-danger btn-sm " style="display: inline-block;"><span class="glyphicon glyphicon-remove"></span></button>'
+	var close = row.insertCell(col++);
+	close.innerHTML = '<button type="button" class="removeMaterialForm btn btn-danger btn-sm " style="display: inline-block;"><span class="glyphicon glyphicon-remove"></span></button>'
 
 	
 }
