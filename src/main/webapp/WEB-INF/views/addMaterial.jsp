@@ -31,12 +31,6 @@
 		</jsp:include>
 	
 		<div class="col-sm-10">
-			<ol class="breadcrumb">
-			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-			  <li><a href="${pageContext.request.contextPath}/material">Material</a></li>
-			  <li>Add material</li>
-			</ol>
-			
 			<h2>Add material </h2><br>
 			
 			<form action="addMaterialData" method="post">

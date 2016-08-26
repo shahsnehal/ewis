@@ -20,12 +20,6 @@
 		</jsp:include>
 	
 		<div class="col-sm-10">
-		
-			<ol class="breadcrumb">
-			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-			  <li>Area management</li>
-			</ol>
-			
 			<div id="notificationArea">
 				<div id="notification">
 					<c:if test="${not empty message}">
