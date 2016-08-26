@@ -7,10 +7,10 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -46,7 +46,7 @@ public class HomeController {
 
 		log.info(this.getClass().getName() + "Method : home ---->  Exit");
 
-		return new ModelAndView("redirect:/material");
+		return new ModelAndView("home");
 	}
 	
 	@RequestMapping(value = "/login", method = {RequestMethod.GET,RequestMethod.POST})
@@ -64,7 +64,7 @@ public class HomeController {
 
 		log.info(this.getClass().getName() + "Method : loginVarification ---->  Exit");
 
-		return new ModelAndView("redirect:/material");
+		return new ModelAndView("redirect:/home");
 	}
 	
 	@RequestMapping(value = "/material", method = {RequestMethod.GET,RequestMethod.POST})
@@ -410,6 +410,7 @@ public class HomeController {
 
 		return "supervisorVerification";
 	}
+	
 	/**
 	 * 
 	 * @param modelMap
@@ -489,5 +490,136 @@ public class HomeController {
 
 		return new RedirectView("locations", true);
 	}
+
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/recipe", method = {RequestMethod.GET,RequestMethod.POST})
+	public String recipe(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : recipe ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : recipe ---->  Exit");
+
+		return "recipe";
+	}
 	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/newRecipe", method = {RequestMethod.GET,RequestMethod.POST})
+	public String newRecipe(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : newRecipe ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : newRecipe ---->  Exit");
+
+		return "newRecipe";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/newRecipeData", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView newRecipeData(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : newRecipeData ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Recipe has been added Successfully ");
+		log.info(this.getClass().getName() + "Method : newRecipeData ---->  Exit");
+
+		return new RedirectView("recipe", true);
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/addStep", method = {RequestMethod.GET,RequestMethod.POST})
+	public String addStep(@RequestParam("Recipe") String selectedStep, HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : addStep ---->  Enter");
+		
+		if(selectedStep.equalsIgnoreCase("Equipement Selection")){
+			
+			return "equipmentSelectionStep";
+		}else if(selectedStep.equalsIgnoreCase("Material Selection")){
+			
+			return "materialSelectionStep";
+		}else if(selectedStep.equalsIgnoreCase("Standing Instruction")){
+			
+			return "standingInstructionStep";
+		}else if(selectedStep.equalsIgnoreCase("Verification Instruction")){
+			
+			return "verificationInstructionStep";
+		}
+		redirectAttributes.addFlashAttribute("message", "Step has been added Successfully ");
+		
+		log.info(this.getClass().getName() + "Method : addStep ---->  Exit");
+		
+		return "newRecipe";
+	}
+
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/saveEquipmentStep", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView saveEquipmentStep(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : saveEquipmentStep ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Equipment Selection Step has been added Successfully ");
+		log.info(this.getClass().getName() + "Method : saveEquipmentStep ---->  Exit");
+
+		return new RedirectView("newRecipe", true);
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/saveMaterialStep", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView saveMaterialStep(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : saveMaterialStep ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Material Selection Step has been added Successfully ");
+		log.info(this.getClass().getName() + "Method : saveMaterialStep ---->  Exit");
+
+		return new RedirectView("newRecipe", true);
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/saveStandingVerificationStep", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView saveStandingVerificationStep(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : saveStandingVerificationStep ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Standing Verification Step has been added Successfully ");
+		log.info(this.getClass().getName() + "Method : saveStandingVerificationStep ---->  Exit");
+
+		return new RedirectView("newRecipe", true);
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/saveVerificationInstructionStep", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView saveVerificationInstructionStep(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : saveVerificationInstructionStep ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Verification Instruction Step has been added Successfully ");
+		log.info(this.getClass().getName() + "Method : saveVerificationInstructionStep ---->  Exit");
+
+		return new RedirectView("newRecipe", true);
+	}
 }

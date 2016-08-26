@@ -20,12 +20,6 @@
 		</jsp:include>
 	
 		<div class="col-sm-10">
-			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
-			  <li><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
-			  <li>Adjust inventory</li>
-			</ol>
-			
 			<h2>Adjust inventory </h2><br>
 			
 			<form action="adjustInventoryData" method="post">

@@ -18,13 +18,6 @@
 		</jsp:include>
 		
 		<div class="col-sm-10">
-		
-			<ol class="breadcrumb">
-			  <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-			  <li><a href="${pageContext.request.contextPath}/material">Material</a></li>
-			  <li>Material Attributes</li>
-			</ol>
-			
 			<h2>Material Attributes </h2><br>
 			
 			<p>Material ID : MA001SA</p>

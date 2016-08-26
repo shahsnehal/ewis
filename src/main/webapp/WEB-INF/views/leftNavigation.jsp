@@ -4,15 +4,33 @@
 <head>
 </head>
 <body>
-	<div class="leftMenubar col-sm-2">	
+	<div id="navbar">    
+  		<nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li id="homemenu"><a href="${pageContext.request.contextPath}/home">Home</a></li>
+		    		<li id="materialMenu"><a href="${pageContext.request.contextPath}/material">Material </a></li>
+		    		<li id="inventoryMenu"><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
+		    		<li id="orderManagementMenu"><a href="${pageContext.request.contextPath}/order">Order Management </a></li>
+		    		<li id="recipeManagementMenu"><a href="${pageContext.request.contextPath}/recipe">Recipe Management </a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li id="areaManagementMenu"><a href="${pageContext.request.contextPath}/areaManagement">Area Management </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+	</div>
+	<%-- <div class="leftMenubar col-sm-2">	
 		<ul class="nav nav-pills nav-stacked" >
-		    <li id="homeMenu"><a href="${pageContext.request.contextPath}/home">Home</a></li>
+		    <li id="homemenu"><a href="${pageContext.request.contextPath}/home">Home</a></li>
 		    <li id="materialMenu"><a href="${pageContext.request.contextPath}/material">Material </a></li>
 		    <li id="inventoryMenu"><a href="${pageContext.request.contextPath}/inventory">Inventory </a></li>
 		    <li id="orderManagementMenu"><a href="${pageContext.request.contextPath}/order">Order Management </a></li>
 		    <li id="areaManagementMenu"><a href="${pageContext.request.contextPath}/areaManagement">Area Management </a></li>
 		</ul>
-	</div>
+	</div> --%>
 	
 	<%String selecteMenu =  request.getParameter("selectMenuItem");%>
 	
