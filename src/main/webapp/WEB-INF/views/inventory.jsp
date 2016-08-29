@@ -393,6 +393,8 @@ $(function () {
             	
             	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+'/container?lotId='+lotId;
             	
+            }else if(action == "History"){
+            	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+"/inventoryHistory";
             }
             
             showNotification(notificationMessage)

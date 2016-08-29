@@ -286,7 +286,7 @@ $(function () {
             }else if(action == "View Exception"){
             	//window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+"/#";
             }else if(action == "View EBR"){
-            	//window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+"/#";
+            	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+"/viewEBR";
             }else if(action == "Properties"){
             	$('#myModal').on('show.bs.modal', function (event) {
           		  var modal = $(this)

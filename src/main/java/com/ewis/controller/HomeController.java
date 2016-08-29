@@ -622,4 +622,46 @@ public class HomeController {
 
 		return new RedirectView("newRecipe", true);
 	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/materialReport", method = {RequestMethod.GET,RequestMethod.POST})
+	public String materialReport(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : materialReport ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : materialReport ---->  Exit");
+
+		return "materialReport";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/inventoryHistory", method = {RequestMethod.GET,RequestMethod.POST})
+	public String inventoryHistory(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : inventoryHistory ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : inventoryHistory ---->  Exit");
+
+		return "inventoryHistory";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/viewEBR", method = {RequestMethod.GET,RequestMethod.POST})
+	public String viewEBR(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : viewEBR ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : viewEBR ---->  Exit");
+
+		return "viewEBR";
+	}
 }

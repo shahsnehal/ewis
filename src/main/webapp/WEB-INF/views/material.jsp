@@ -170,6 +170,8 @@ $(function () {
             	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+"/materialAttributes";
             }else if(action == "Export"){
             	window.open(location.href.substr(0, (location.href).lastIndexOf('/'))+'/resources/exportMaterial.xml', '_blank');
+            }else if(action == "Report"){
+            	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+"/materialReport";
             }else if (action == "Check out"){
             	window.location.href = location.href.substr(0, (location.href).lastIndexOf('/'))+"/editMaterial";
             }else if (action == "Set Recipe/Version"){
