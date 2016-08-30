@@ -664,4 +664,33 @@ public class HomeController {
 
 		return "viewEBR";
 	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/configuration", method = {RequestMethod.GET,RequestMethod.POST})
+	public String configuration(ModelMap modelMap) {
+		log.info(this.getClass().getName() + "Method : configuration ---->  Enter");
+
+		log.info(this.getClass().getName() + "Method : configuration ---->  Exit");
+
+		return "configuration";
+	}
+	
+	/**
+	 * 
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "/saveConfiguration", method = {RequestMethod.GET,RequestMethod.POST})
+	public RedirectView saveConfiguration(HttpServletRequest request, HttpServletResponse response, final RedirectAttributes redirectAttributes) {
+		log.info(this.getClass().getName() + "Method : saveConfiguration ---->  Enter");
+
+		redirectAttributes.addFlashAttribute("message", "Configuration has been saved Successfully ");
+		log.info(this.getClass().getName() + "Method : saveConfiguration ---->  Exit");
+
+		return new RedirectView("configuration", true);
+	}
 }

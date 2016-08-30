@@ -10,4 +10,5 @@
 <script src="${pageContext.request.contextPath}/resources/js/alert.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <script	src="${pageContext.request.contextPath}/resources/js/custome.js"></script>
+<script	src="${pageContext.request.contextPath}/resources/js/bootstrap-datagrid.js"></script>
 	

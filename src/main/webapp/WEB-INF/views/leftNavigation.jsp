@@ -16,6 +16,7 @@
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li id="areaManagementMenu"><a href="${pageContext.request.contextPath}/areaManagement">Area Management </a></li>
+                            <li id="configuration"><a href="${pageContext.request.contextPath}/configuration">Configuration </a></li>
                         </ul>
                     </li>
                 </ul>
